@@ -7,7 +7,7 @@ import { ArrowRight, BadgeCheck, Clock, ShieldCheck, Star } from "lucide-react"
 import { EstimateForm } from "@/components/estimate-form"
 import { buttonVariants } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site-config"
-import heroImage from "../../public/images/hero-heat-pump.jpg"
+import heroImage from "../../public/images/hero-ac-unit.jpg"
 
 const enterStyle =
   "animate-in fade-in slide-in-from-bottom-4 fill-mode-backwards duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"
@@ -30,16 +30,23 @@ function CtaArrow() {
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-heading" className="relative pb-16 sm:pb-24">
-      <div className="relative isolate overflow-hidden bg-neutral-900">
+    <section
+      aria-labelledby="hero-heading"
+      className="relative -mt-16 pb-16 sm:pb-24"
+    >
+      <div className="relative isolate overflow-hidden bg-neutral-900 pt-16">
         <Image
           src={heroImage}
-          alt="Modern heat pump installed beside a brick home"
+          alt="Outdoor air conditioner unit mounted on a ledge beside a home"
           fill
           priority
           placeholder="blur"
           sizes="100vw"
-          className="-z-10 object-cover object-[62%_center] animate-in fade-in zoom-in-105 duration-[1400ms] ease-out motion-reduce:animate-none lg:object-center"
+          className="-z-10 object-cover object-[36%_center] animate-in fade-in zoom-in-105 duration-[1400ms] ease-out motion-reduce:animate-none lg:object-center"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 -z-10 h-40 bg-linear-to-b from-black/50 to-transparent"
         />
         <div
           aria-hidden="true"
@@ -108,32 +115,29 @@ export function Hero() {
             <ul
               className={cn(
                 enterStyle,
-                "flex flex-wrap items-center gap-x-6 gap-y-2.5 pt-1 text-sm text-white/80"
+                "flex items-center gap-x-3.5 pt-1 text-xs whitespace-nowrap text-white/80 sm:gap-x-6 sm:text-sm"
               )}
               style={enterDelay(340)}
             >
-              <li className="flex items-center gap-2">
-                <span className="flex items-center gap-0.5" aria-hidden="true">
-                  {Array.from({ length: 5 }, (_, index) => (
-                    <Star
-                      key={index}
-                      className="size-3.5 fill-amber-400 text-amber-400"
-                    />
-                  ))}
-                </span>
+              <li className="flex items-center gap-1.5 sm:gap-2">
+                <Star
+                  className="size-3.5 fill-amber-400 text-amber-400 sm:size-4"
+                  aria-hidden="true"
+                />
                 <span>
                   <span className="font-medium text-white">
                     {siteConfig.reviews.rating}
                   </span>{" "}
-                  from {siteConfig.reviews.count} reviews
+                  {siteConfig.reviews.source}
+                  <span className="max-[359px]:hidden"> rating</span>
                 </span>
               </li>
-              <li className="flex items-center gap-2">
-                <ShieldCheck className="size-4" aria-hidden="true" />
-                Licensed &amp; insured
+              <li className="flex items-center gap-1.5 sm:gap-2">
+                <ShieldCheck className="size-3.5 sm:size-4" aria-hidden="true" />
+                Licensed<span className="max-sm:hidden"> &amp; insured</span>
               </li>
-              <li className="flex items-center gap-2">
-                <BadgeCheck className="size-4" aria-hidden="true" />
+              <li className="flex items-center gap-1.5 sm:gap-2">
+                <BadgeCheck className="size-3.5 sm:size-4" aria-hidden="true" />
                 Upfront pricing
               </li>
             </ul>

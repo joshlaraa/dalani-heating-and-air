@@ -45,11 +45,15 @@ const topLevelItemStyle =
 
 export function SiteHeader() {
   const scrolled = useScrolled()
+  const pathname = usePathname()
+  const transparent = pathname === "/" && !scrolled
 
   return (
     <header
+      data-slot="site-header"
       data-scrolled={scrolled}
-      className="sticky top-0 z-40 w-full border-b border-transparent bg-background/80 backdrop-blur-xl transition-[border-color,box-shadow,background-color] duration-300 data-[scrolled=true]:border-border data-[scrolled=true]:bg-background/85 data-[scrolled=true]:shadow-[0_1px_12px_-4px_rgb(0_0_0/0.08)]"
+      data-transparent={transparent}
+      className="sticky top-0 z-40 w-full border-b border-transparent bg-background/80 text-foreground backdrop-blur-xl transition-[border-color,box-shadow,background-color,color,backdrop-filter] duration-500 ease-out data-[scrolled=true]:border-border data-[scrolled=true]:bg-background/85 data-[scrolled=true]:shadow-[0_1px_12px_-4px_rgb(0_0_0/0.08)] data-[transparent=true]:bg-transparent data-[transparent=true]:backdrop-blur-none"
     >
       <a
         href="#main"

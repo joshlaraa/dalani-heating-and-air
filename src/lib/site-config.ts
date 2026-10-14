@@ -29,15 +29,16 @@ export const siteConfig = {
   tagline: "Heating & Air",
   logoIcon: Flame,
   phone: {
-    display: "(555) 123-4567",
+    display: "(760) 783-9401",
     href: "tel:+15551234567",
   },
   email: "hello@dalaniheating.com",
   serviceArea: "Serving all of San Diego County",
   estimateHref: "/free-estimate",
   reviews: {
-    rating: "4.9",
+    rating: "5.0",
     count: "300+",
+    source: "Google",
   },
 }
 

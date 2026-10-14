@@ -116,7 +116,7 @@ export function EstimateForm() {
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="(555) 123-4567"
+            placeholder="(760) 783-9401"
             required
             className={controlStyle}
           />

@@ -32,8 +32,19 @@ export const siteConfig = {
     display: "(555) 123-4567",
     href: "tel:+15551234567",
   },
+  email: "hello@dalaniheating.com",
+  serviceArea: "Serving all of San Diego County",
   estimateHref: "/free-estimate",
+  reviews: {
+    rating: "4.9",
+    count: "300+",
+  },
 }
+
+export const legalNav: NavLink[] = [
+  { title: "Privacy Policy", href: "/privacy" },
+  { title: "Terms of Service", href: "/terms" },
+]
 
 export const services: ServiceLink[] = [
   {
@@ -78,7 +89,7 @@ export const mainNav: NavItem[] = [
   { title: "Home", href: "/" },
   { title: "About Us", href: "/about" },
   { title: "Services", href: "/services", items: services },
-  { title: "Contact Us", href: "/contact" },
+  { title: "Contact", href: "/contact" },
 ]
 
 export function isActivePath(pathname: string, href: string) {

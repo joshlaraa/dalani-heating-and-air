@@ -61,34 +61,15 @@ export function SiteHeader() {
         <Logo className="justify-self-start" />
         <DesktopNav />
         <div className="flex items-center gap-1.5 justify-self-end">
-          <a
-            href={siteConfig.phone.href}
+          <Link
+            href="/contact"
             className={cn(
-              buttonVariants({ variant: "ghost", size: "lg" }),
-              "hidden text-muted-foreground hover:text-foreground lg:inline-flex"
+              buttonVariants({ size: "lg" }),
+              "h-10 px-4 has-data-[icon=inline-start]:pl-3.5"
             )}
           >
             <Phone data-icon="inline-start" aria-hidden="true" />
-            {siteConfig.phone.display}
-          </a>
-          <a
-            href={siteConfig.phone.href}
-            aria-label={`Call ${siteConfig.phone.display}`}
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "icon-lg" }),
-              "size-10 lg:hidden"
-            )}
-          >
-            <Phone aria-hidden="true" />
-          </a>
-          <Link
-            href={siteConfig.estimateHref}
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "hidden px-4 sm:inline-flex"
-            )}
-          >
-            Free Estimate
+            Contact Us
           </Link>
           <MobileNav />
         </div>

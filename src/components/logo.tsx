@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { cn } from "cn"
+import { Snowflake } from "lucide-react"
 
 import { siteConfig } from "@/lib/site-config"
 
@@ -22,8 +23,11 @@ export function Logo({
         className
       )}
     >
-      <span className="flex size-8 items-center justify-center rounded-lg bg-linear-to-br from-orange-500 to-red-600 text-white shadow-sm shadow-orange-600/25 ring-1 ring-black/5 ring-inset transition-transform duration-300 group-hover/logo:scale-105">
+      <span className="relative flex size-8 items-center justify-center rounded-lg bg-linear-to-br from-brand-from to-brand-to text-white shadow-sm shadow-brand-to/25 ring-1 ring-black/5 ring-inset transition-transform duration-300 group-hover/logo:scale-105">
         <Icon className="size-4.5 fill-white/25" aria-hidden="true" />
+        <span className="absolute -right-1 -bottom-1 flex size-3.5 items-center justify-center rounded-full bg-brand-frost text-white ring-2 ring-background">
+          <Snowflake className="size-2.5" aria-hidden="true" />
+        </span>
       </span>
       <span className="flex flex-col leading-none">
         <span className="font-heading text-[0.95rem] font-semibold tracking-tight">

@@ -30,7 +30,7 @@ export const siteConfig = {
   logoIcon: Flame,
   phone: {
     display: "(760) 783-9401",
-    href: "tel:+15551234567",
+    href: "tel:+7607839401",
   },
   email: "hello@dalaniheating.com",
   serviceArea: "Serving all of San Diego County",

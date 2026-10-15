@@ -1,12 +1,8 @@
 import Link from "next/link"
-import {
-  ArrowRight,
-  BadgeCheck,
-  Phone,
-  type LucideIcon,
-} from "lucide-react"
+import { ArrowRight, BadgeCheck, Phone } from "lucide-react"
 
 import { ServiceDetailsDrawer } from "@/components/service-details-drawer"
+import { ServicePlaceholder } from "@/components/service-placeholder"
 import { buttonVariants } from "@/components/ui/button"
 import { services, siteConfig, type ServiceLink } from "@/lib/site-config"
 
@@ -97,33 +93,29 @@ export function ServicesSection({
 }
 
 function ServiceCard({ service }: { service: ServiceLink }) {
-  const Icon: LucideIcon = service.icon
-
   return (
     <li>
       <Link
         href={service.href}
         scroll={false}
         aria-label={`Learn more about ${service.title}`}
-        className="group flex h-full min-h-56 flex-col items-start gap-6 rounded-2xl border bg-card p-5 text-card-foreground shadow-xs transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-6"
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-xs transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
       >
-        <span className="flex size-11 items-center justify-center rounded-xl bg-muted text-foreground transition-colors duration-200 group-hover:bg-primary group-hover:text-primary-foreground">
-          <Icon className="size-5" aria-hidden="true" />
-        </span>
-        <span className="flex flex-1 flex-col gap-2">
-          <span className="font-heading text-lg font-semibold tracking-tight">
+        <ServicePlaceholder icon={service.icon} />
+        <span className="flex flex-1 flex-col items-center gap-3 px-5 pt-8 pb-5 text-center sm:px-6 sm:pb-6">
+          <span className="font-heading text-base font-semibold tracking-tight sm:text-lg">
             {service.title}
           </span>
-          <span className="text-sm leading-relaxed text-muted-foreground">
+          <span className="max-w-xs text-xs leading-relaxed text-muted-foreground sm:text-sm">
             {service.description}
           </span>
-        </span>
-        <span className="inline-flex items-center gap-2 text-sm font-medium">
-          Explore service
-          <ArrowRight
-            className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-            aria-hidden="true"
-          />
+          <span className="mt-auto inline-flex items-center gap-1.5 pt-1 text-xs font-medium text-foreground">
+            View service
+            <ArrowRight
+              className="size-3.5 transition-transform duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </span>
         </span>
       </Link>
     </li>

@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowRight, BadgeCheck, MapPin, Phone, X } from "lucide-react"
 
 import { ServicePlaceholder } from "@/components/service-placeholder"
@@ -24,18 +24,12 @@ export function ServiceDetailsDrawer({
 }) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
-  const closeTimeoutRef = useRef<number | null>(null)
   const service = services.find((item) => item.href === serviceHref)
 
+  // Mount closed, then open on the next frame so the open transition plays.
   useEffect(() => {
     const animationFrame = window.requestAnimationFrame(() => setOpen(true))
-
-    return () => {
-      window.cancelAnimationFrame(animationFrame)
-      if (closeTimeoutRef.current !== null) {
-        window.clearTimeout(closeTimeoutRef.current)
-      }
-    }
+    return () => window.cancelAnimationFrame(animationFrame)
   }, [serviceHref])
 
   if (!service) {
@@ -44,29 +38,33 @@ export function ServiceDetailsDrawer({
 
   const Icon = service.icon
 
-  function handleOpenChange(nextOpen: boolean) {
-    setOpen(nextOpen)
-    if (closeTimeoutRef.current !== null) {
-      window.clearTimeout(closeTimeoutRef.current)
-      closeTimeoutRef.current = null
-    }
-
-    if (!nextOpen) {
-      closeTimeoutRef.current = window.setTimeout(
-        () => router.replace("/services", { scroll: false }),
-        260
-      )
+  // Only change the URL AFTER the close animation has finished, so the route
+  // change (and page re-render) never competes with the animation.
+  function handleOpenChangeComplete(isOpen: boolean) {
+    if (!isOpen) {
+      router.replace("/services", { scroll: false })
     }
   }
 
   return (
     <Drawer
       open={open}
-      onOpenChange={handleOpenChange}
+      onOpenChange={setOpen}
+      onOpenChangeComplete={handleOpenChangeComplete}
       swipeDirection="down"
     >
-      <DrawerContent className="data-[swipe-axis=y]:top-1/2 data-[swipe-axis=y]:bottom-auto data-[swipe-axis=y]:mx-auto data-[swipe-axis=y]:mb-0 data-[swipe-axis=y]:w-[calc(100%-1.5rem)] data-[swipe-axis=y]:max-w-2xl data-[swipe-axis=y]:-translate-y-1/2 data-[swipe-axis=y]:overflow-hidden data-[swipe-axis=y]:rounded-3xl data-[swipe-axis=y]:border data-[swipe-axis=y]:[--drawer-content-max-height:min(86dvh,44rem)] data-[swipe-axis=y]:shadow-2xl data-starting-style:duration-[550ms] data-ending-style:duration-[250ms] motion-reduce:duration-0">
-        <div className="relative">
+      {/*
+        Size: up to 48rem wide on desktop, nearly full width on phones, and
+        never taller than 92% of the screen. The banner height scales with the
+        screen height (clamp + dvh), so everything fits without scrolling.
+      */}
+      <DrawerContent className="transition-[transform,opacity] duration-300 motion-reduce:duration-0 data-starting-style:opacity-0 data-ending-style:opacity-0! data-ending-style:duration-200 data-[swipe-axis=y]:top-1/2 data-[swipe-axis=y]:bottom-auto! data-[swipe-axis=y]:mx-auto data-[swipe-axis=y]:mb-0 data-[swipe-axis=y]:flex data-[swipe-axis=y]:h-auto! data-[swipe-axis=y]:max-h-[min(92dvh,48rem)]! data-[swipe-axis=y]:w-[calc(100%-1.5rem)] data-[swipe-axis=y]:max-w-3xl data-[swipe-axis=y]:origin-center! data-[swipe-axis=y]:-translate-y-1/2 data-[swipe-axis=y]:flex-col data-[swipe-axis=y]:overflow-hidden data-[swipe-axis=y]:rounded-3xl data-[swipe-axis=y]:border data-[swipe-axis=y]:[--closed-transform:translate3d(0,1.25rem,0)_scale(0.96)]! data-[swipe-axis=y]:[--drawer-content-max-height:min(92dvh,48rem)] data-[swipe-axis=y]:shadow-2xl">
+        {/*
+          Banner. The [&>div] / [&>div>span.relative] selectors resize the
+          placeholder and its icon box from here, so no other file changes.
+          Phone: icon box 64px so it never collides with the label or badge.
+        */}
+        <div className="relative shrink-0 [&>div]:aspect-auto [&>div]:h-[clamp(8rem,20dvh,11rem)] [&>div]:min-h-0 sm:[&>div]:h-[clamp(11rem,28dvh,16rem)] [&>div>span.relative]:size-16 sm:[&>div>span.relative]:size-24 [&>div>span.relative>svg]:size-7 sm:[&>div>span.relative>svg]:size-10">
           <ServicePlaceholder icon={Icon} variant="feature" />
           <DrawerClose
             render={
@@ -74,45 +72,49 @@ export function ServiceDetailsDrawer({
                 variant="ghost"
                 size="icon"
                 aria-label="Close service details"
-                className="absolute top-4 right-4 size-10 rounded-full border border-white/70 bg-background/85 text-foreground shadow-sm backdrop-blur-md hover:bg-background"
+                className="absolute top-4 right-4 size-10 rounded-full border border-white/70 bg-background/90 text-foreground shadow-sm hover:bg-background"
               />
             }
           >
             <X aria-hidden="true" />
           </DrawerClose>
-          <span className="absolute right-5 bottom-4 inline-flex items-center gap-1.5 rounded-full border border-white/70 bg-background/85 px-3 py-1.5 text-[11px] font-medium text-foreground shadow-sm backdrop-blur-md">
+          <span className="absolute right-5 bottom-4 hidden items-center gap-1.5 rounded-full border border-white/70 bg-background/90 px-3 py-1.5 text-[11px] font-medium text-foreground shadow-sm sm:inline-flex">
             <BadgeCheck className="size-3.5" aria-hidden="true" />
             Service overview
           </span>
         </div>
 
-        <div className="flex min-h-0 flex-col gap-4 p-4 sm:gap-5 sm:p-6">
-          <DrawerHeader className="gap-1.5 p-0">
-            <DrawerTitle className="font-heading text-xl font-semibold tracking-tight sm:text-2xl">
+        {/* overflow-y-auto is only a safety net for very short screens */}
+        <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-5 sm:gap-6 sm:p-8">
+          <DrawerHeader className="gap-2 p-0">
+            <DrawerTitle className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
               {service.title}
             </DrawerTitle>
-            <DrawerDescription className="text-sm leading-relaxed text-muted-foreground">
+            <DrawerDescription className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               {service.description}
             </DrawerDescription>
           </DrawerHeader>
 
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-xl bg-muted px-3.5 py-3">
-            <span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground sm:text-sm">
-              <MapPin className="size-4 shrink-0" aria-hidden="true" />
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-2xl bg-muted px-4 py-3.5 sm:px-5 sm:py-4">
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground sm:text-base">
+              <MapPin className="size-4 shrink-0 sm:size-5" aria-hidden="true" />
               {siteConfig.serviceArea}
             </span>
-            <span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground sm:text-sm">
-              <BadgeCheck className="size-4 shrink-0" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground sm:text-base">
+              <BadgeCheck
+                className="size-4 shrink-0 sm:size-5"
+                aria-hidden="true"
+              />
               Free estimates
             </span>
           </div>
 
-          <div className="flex flex-col gap-2.5 sm:flex-row sm:gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
             <Link
               href="/contact"
               className={buttonVariants({
                 size: "lg",
-                className: "h-11 sm:flex-1",
+                className: "h-12 text-base sm:h-14 sm:flex-1",
               })}
             >
               Get a free estimate
@@ -123,7 +125,7 @@ export function ServiceDetailsDrawer({
               className={buttonVariants({
                 variant: "outline",
                 size: "lg",
-                className: "h-11 sm:flex-1",
+                className: "h-12 text-base sm:h-14 sm:flex-1",
               })}
             >
               <Phone data-icon="inline-start" aria-hidden="true" />

@@ -19,12 +19,14 @@ export function ServicePlaceholder({
           : "aspect-[2.2] min-h-40 overflow-hidden sm:min-h-48"
       )}
     >
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-brand-from/30 via-background to-brand-to/30" />
-        <div className="absolute -top-16 -right-12 size-44 rounded-full bg-brand-from/20 blur-3xl" />
-        <div className="absolute -bottom-20 -left-12 size-48 rounded-full bg-brand-to/15 blur-3xl" />
-        <div className="absolute inset-4 rounded-2xl border border-white/50" />
-      </div>
+      {/*
+        Static background: one flat two-tone gradient. No blurred shapes and no
+        bright "via" band, so nothing shimmers when the card is hovered, pressed,
+        or animated. To change the look, edit the from-/to- colors on this line.
+      */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-linear-to-br from-brand-from/15 to-brand-to/20" />
+      <div className="pointer-events-none absolute inset-4 z-0 rounded-2xl border border-white/60" />
+
       <span className="absolute top-4 left-5 z-10 text-[10px] font-semibold tracking-[0.16em] text-foreground/40 uppercase">
         Dalani heating &amp; air
       </span>
@@ -33,7 +35,7 @@ export function ServicePlaceholder({
           <Icon className="size-5 sm:size-6" />
         </span>
       ) : (
-        <span className="relative z-10 flex size-20 items-center justify-center rounded-3xl border border-white/70 bg-background/85 text-foreground shadow-lg shadow-brand-to/10 backdrop-blur-md sm:size-24">
+        <span className="relative z-10 flex size-20 items-center justify-center rounded-3xl border border-white/70 bg-background text-foreground shadow-lg sm:size-24">
           <Icon className="size-9 sm:size-10" />
         </span>
       )}

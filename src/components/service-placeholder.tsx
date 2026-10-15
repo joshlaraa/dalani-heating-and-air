@@ -20,8 +20,8 @@ export function ServicePlaceholder({
       )}
     >
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-brand-frost/20 via-muted to-brand-from/20" />
-        <div className="absolute -top-16 -right-12 size-44 rounded-full bg-brand-frost/20 blur-3xl" />
+        <div className="absolute inset-0 bg-linear-to-br from-brand-from/30 via-background to-brand-to/30" />
+        <div className="absolute -top-16 -right-12 size-44 rounded-full bg-brand-from/20 blur-3xl" />
         <div className="absolute -bottom-20 -left-12 size-48 rounded-full bg-brand-to/15 blur-3xl" />
         <div className="absolute inset-4 rounded-2xl border border-white/50" />
       </div>

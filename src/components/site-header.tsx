@@ -89,7 +89,7 @@ function DesktopNav() {
   return (
     <NavigationMenu
       open={open}
-      onOpenChange={setOpen}
+      onOpenChange={(nextOpen) => setOpen(Boolean(nextOpen))}
       className="hidden lg:flex"
       aria-label="Main"
     >

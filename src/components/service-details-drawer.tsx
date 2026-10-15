@@ -38,7 +38,7 @@ export function ServiceDetailsDrawer({
       }}
       swipeDirection="down"
     >
-      <DrawerContent className="data-[swipe-axis=y]:top-1/2 data-[swipe-axis=y]:bottom-auto data-[swipe-axis=y]:mx-auto data-[swipe-axis=y]:mb-0 data-[swipe-axis=y]:w-[calc(100%-1.5rem)] data-[swipe-axis=y]:max-w-2xl data-[swipe-axis=y]:-translate-y-1/2 data-[swipe-axis=y]:overflow-hidden data-[swipe-axis=y]:rounded-3xl data-[swipe-axis=y]:border data-[swipe-axis=y]:[--drawer-content-max-height:min(86dvh,44rem)] data-[swipe-axis=y]:shadow-2xl">
+      <DrawerContent className="data-[swipe-axis=y]:top-1/2 data-[swipe-axis=y]:bottom-auto data-[swipe-axis=y]:mx-auto data-[swipe-axis=y]:mb-0 data-[swipe-axis=y]:w-[calc(100%-1.5rem)] data-[swipe-axis=y]:max-w-2xl data-[swipe-axis=y]:-translate-y-1/2 data-[swipe-axis=y]:overflow-hidden data-[swipe-axis=y]:rounded-3xl data-[swipe-axis=y]:border data-[swipe-axis=y]:[--drawer-content-max-height:min(86dvh,44rem)] data-[swipe-axis=y]:shadow-2xl data-starting-style:duration-[550ms] data-ending-style:duration-[250ms] motion-reduce:duration-0">
         <div className="relative">
           <ServicePlaceholder icon={Icon} variant="feature" />
           <DrawerClose

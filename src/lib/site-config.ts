@@ -16,6 +16,7 @@ export type NavLink = {
 
 export type ServiceLink = NavLink & {
   description: string
+  details: string
   icon: LucideIcon
 }
 
@@ -52,36 +53,48 @@ export const services: ServiceLink[] = [
     title: "Heating",
     href: "/services/heating",
     description: "Furnace repair, replacement, and tune-ups.",
+    details:
+      "Get help with furnace repairs, replacement options, and seasonal tune-ups to keep your home comfortable when temperatures drop.",
     icon: Heater,
   },
   {
     title: "Air Conditioning",
     href: "/services/air-conditioning",
     description: "AC installs, repairs, and seasonal service.",
+    details:
+      "From troubleshooting and repairs to new installations and seasonal service, find the right support for your home's air conditioning.",
     icon: Snowflake,
   },
   {
     title: "Heat Pumps",
     href: "/services/heat-pumps",
     description: "Efficient year-round heating and cooling.",
+    details:
+      "Heat pumps provide heating and cooling in one system. Get help with service, repairs, and installation for year-round home comfort.",
     icon: Fan,
   },
   {
     title: "Ductless Mini-Splits",
     href: "/services/ductless",
     description: "Zoned comfort without the ductwork.",
+    details:
+      "Ductless mini-splits offer zoned heating and cooling without adding ductwork. We can help with installation, service, and repairs.",
     icon: AirVent,
   },
   {
     title: "Indoor Air Quality",
     href: "/services/indoor-air-quality",
     description: "Filtration, purifiers, and humidity control.",
+    details:
+      "Explore filtration, air purifiers, and humidity control options to support a more comfortable indoor environment.",
     icon: Wind,
   },
   {
     title: "Repairs & Maintenance",
     href: "/services/maintenance",
     description: "Fast diagnostics and preventive care.",
+    details:
+      "When something is not working as it should, get help diagnosing the issue. Routine maintenance can also help keep your heating and cooling system on track.",
     icon: Wrench,
   },
 ]

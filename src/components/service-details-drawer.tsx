@@ -38,7 +38,7 @@ export function ServiceDetailsDrawer({
       }}
       swipeDirection="down"
     >
-      <DrawerContent className="data-[swipe-axis=y]:mx-auto data-[swipe-axis=y]:mb-3 data-[swipe-axis=y]:w-[calc(100%-1.5rem)] data-[swipe-axis=y]:max-w-2xl data-[swipe-axis=y]:overflow-hidden data-[swipe-axis=y]:rounded-3xl data-[swipe-axis=y]:[--drawer-content-max-height:calc(100dvh-1.5rem)] data-[swipe-axis=y]:shadow-2xl sm:data-[swipe-axis=y]:top-1/2 sm:data-[swipe-axis=y]:bottom-auto sm:data-[swipe-axis=y]:-translate-y-1/2 sm:data-[swipe-axis=y]:mb-0 sm:data-[swipe-axis=y]:[--drawer-content-max-height:min(86dvh,44rem)] sm:data-[swipe-axis=y]:border">
+      <DrawerContent className="data-[swipe-axis=y]:top-1/2 data-[swipe-axis=y]:bottom-auto data-[swipe-axis=y]:mx-auto data-[swipe-axis=y]:mb-0 data-[swipe-axis=y]:w-[calc(100%-1.5rem)] data-[swipe-axis=y]:max-w-2xl data-[swipe-axis=y]:-translate-y-1/2 data-[swipe-axis=y]:overflow-hidden data-[swipe-axis=y]:rounded-3xl data-[swipe-axis=y]:border data-[swipe-axis=y]:[--drawer-content-max-height:min(86dvh,44rem)] data-[swipe-axis=y]:shadow-2xl">
         <div className="relative">
           <ServicePlaceholder icon={Icon} variant="feature" />
           <DrawerClose
@@ -59,9 +59,9 @@ export function ServiceDetailsDrawer({
           </span>
         </div>
 
-        <div className="flex min-h-0 flex-col gap-5 overflow-y-auto p-5 sm:gap-6 sm:p-7">
-          <DrawerHeader className="gap-2 p-0">
-            <DrawerTitle className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
+        <div className="flex min-h-0 flex-col gap-4 p-4 sm:gap-5 sm:p-6">
+          <DrawerHeader className="gap-1.5 p-0">
+            <DrawerTitle className="font-heading text-xl font-semibold tracking-tight sm:text-2xl">
               {service.title}
             </DrawerTitle>
             <DrawerDescription className="text-sm leading-relaxed text-muted-foreground">
@@ -69,37 +69,15 @@ export function ServiceDetailsDrawer({
             </DrawerDescription>
           </DrawerHeader>
 
-          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-            {service.details}
-          </p>
-
-          <div className="grid gap-3 rounded-2xl bg-muted p-4 sm:grid-cols-2 sm:gap-4 sm:p-5">
-            <div className="flex items-start gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-background text-foreground shadow-xs">
-                <MapPin className="size-4" aria-hidden="true" />
-              </span>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
-                  Local service
-                </span>
-                <span className="text-sm font-medium">
-                  {siteConfig.serviceArea}
-                </span>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-background text-foreground shadow-xs">
-                <BadgeCheck className="size-4" aria-hidden="true" />
-              </span>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
-                  No obligation
-                </span>
-                <span className="text-sm font-medium">
-                  Free, upfront estimates
-                </span>
-              </div>
-            </div>
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-xl bg-muted px-3.5 py-3">
+            <span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground sm:text-sm">
+              <MapPin className="size-4 shrink-0" aria-hidden="true" />
+              {siteConfig.serviceArea}
+            </span>
+            <span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground sm:text-sm">
+              <BadgeCheck className="size-4 shrink-0" aria-hidden="true" />
+              Free estimates
+            </span>
           </div>
 
           <div className="flex flex-col gap-2.5 sm:flex-row sm:gap-3">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useSyncExternalStore } from "react"
+import { useState, useSyncExternalStore } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "cn"
@@ -84,9 +84,15 @@ export function SiteHeader() {
 
 function DesktopNav() {
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
   return (
-    <NavigationMenu className="hidden lg:flex" aria-label="Main">
+    <NavigationMenu
+      open={open}
+      onOpenChange={setOpen}
+      className="hidden lg:flex"
+      aria-label="Main"
+    >
       <NavigationMenuList className="gap-0.5">
         {mainNav.map((item) => {
           const active = isActivePath(pathname, item.href)
@@ -104,6 +110,7 @@ function DesktopNav() {
                     items={item.items}
                     allHref={item.href}
                     pathname={pathname}
+                    onNavigate={() => setOpen(false)}
                   />
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -116,6 +123,7 @@ function DesktopNav() {
                 active={active}
                 render={<Link href={item.href} />}
                 className={cn(navigationMenuTriggerStyle(), topLevelItemStyle)}
+                onClick={() => setOpen(false)}
               >
                 {item.title}
               </NavigationMenuLink>
@@ -131,15 +139,18 @@ function ServicesMenu({
   items,
   allHref,
   pathname,
+  onNavigate,
 }: {
   items: ServiceLink[]
   allHref: string
   pathname: string
+  onNavigate: () => void
 }) {
   return (
     <div className="grid w-[740px] grid-cols-[220px_1fr] gap-1.5 p-1">
       <NavigationMenuLink
         href={siteConfig.phone.href}
+        onClick={onNavigate}
         className="relative flex-col items-start justify-end gap-3 overflow-hidden rounded-md bg-primary p-5 text-primary-foreground hover:bg-primary/90 focus:bg-primary/90"
       >
         <span className="flex size-9 items-center justify-center rounded-md bg-primary-foreground/10 ring-1 ring-primary-foreground/15">
@@ -165,12 +176,14 @@ function ServicesMenu({
               <ServiceMenuLink
                 service={service}
                 active={isActivePath(pathname, service.href)}
+                onNavigate={onNavigate}
               />
             </li>
           ))}
         </ul>
         <NavigationMenuLink
           render={<Link href={allHref} />}
+          onClick={onNavigate}
           className="group/all mt-auto justify-between px-3 text-sm in-data-[slot=navigation-menu-content]:rounded-full font-medium text-muted-foreground hover:text-foreground focus:text-foreground"
         >
           View all services
@@ -187,9 +200,11 @@ function ServicesMenu({
 function ServiceMenuLink({
   service,
   active,
+  onNavigate,
 }: {
   service: ServiceLink
   active: boolean
+  onNavigate: () => void
 }) {
   const Icon = service.icon
 
@@ -197,6 +212,7 @@ function ServiceMenuLink({
     <NavigationMenuLink
       active={active}
       render={<Link href={service.href} />}
+      onClick={onNavigate}
       className="group/service items-start gap-3 p-3"
     >
       <span className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-background text-muted-foreground shadow-xs transition-colors duration-200 group-hover/service:text-foreground group-data-active/service:text-foreground">

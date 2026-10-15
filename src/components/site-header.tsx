@@ -84,12 +84,21 @@ export function SiteHeader() {
 
 function DesktopNav() {
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const [menuState, setMenuState] = useState({ pathname, open: false })
+  const open = menuState.pathname === pathname && menuState.open
+
+  function handleOpenChange(nextOpen: boolean) {
+    setMenuState({ pathname, open: nextOpen })
+  }
+
+  function closeMenu() {
+    setMenuState({ pathname, open: false })
+  }
 
   return (
     <NavigationMenu
       open={open}
-      onOpenChange={(nextOpen) => setOpen(Boolean(nextOpen))}
+      onOpenChange={handleOpenChange}
       className="hidden lg:flex"
       aria-label="Main"
     >
@@ -110,7 +119,7 @@ function DesktopNav() {
                     items={item.items}
                     allHref={item.href}
                     pathname={pathname}
-                    onNavigate={() => setOpen(false)}
+                    onNavigate={closeMenu}
                   />
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -121,9 +130,9 @@ function DesktopNav() {
             <NavigationMenuItem key={item.href}>
               <NavigationMenuLink
                 active={active}
-                render={<Link href={item.href} />}
+                render={<Link href={item.href} onNavigate={closeMenu} />}
                 className={cn(navigationMenuTriggerStyle(), topLevelItemStyle)}
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
               >
                 {item.title}
               </NavigationMenuLink>
@@ -182,7 +191,7 @@ function ServicesMenu({
           ))}
         </ul>
         <NavigationMenuLink
-          render={<Link href={allHref} />}
+          render={<Link href={allHref} onNavigate={onNavigate} />}
           onClick={onNavigate}
           className="group/all mt-auto justify-between px-3 text-sm in-data-[slot=navigation-menu-content]:rounded-full font-medium text-muted-foreground hover:text-foreground focus:text-foreground"
         >
@@ -211,7 +220,7 @@ function ServiceMenuLink({
   return (
     <NavigationMenuLink
       active={active}
-      render={<Link href={service.href} />}
+      render={<Link href={service.href} onNavigate={onNavigate} />}
       onClick={onNavigate}
       className="group/service items-start gap-3 p-3"
     >

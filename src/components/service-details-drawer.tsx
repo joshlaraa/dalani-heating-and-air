@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
 import { ArrowRight, BadgeCheck, MapPin, Phone, X } from "lucide-react"
 
 import { ServicePlaceholder } from "@/components/service-placeholder"
@@ -22,7 +23,20 @@ export function ServiceDetailsDrawer({
   serviceHref: string
 }) {
   const router = useRouter()
+  const [open, setOpen] = useState(false)
+  const closeTimeoutRef = useRef<number | null>(null)
   const service = services.find((item) => item.href === serviceHref)
+
+  useEffect(() => {
+    const animationFrame = window.requestAnimationFrame(() => setOpen(true))
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame)
+      if (closeTimeoutRef.current !== null) {
+        window.clearTimeout(closeTimeoutRef.current)
+      }
+    }
+  }, [serviceHref])
 
   if (!service) {
     throw new Error(`No service found for "${serviceHref}".`)
@@ -30,12 +44,25 @@ export function ServiceDetailsDrawer({
 
   const Icon = service.icon
 
+  function handleOpenChange(nextOpen: boolean) {
+    setOpen(nextOpen)
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+
+    if (!nextOpen) {
+      closeTimeoutRef.current = window.setTimeout(
+        () => router.replace("/services", { scroll: false }),
+        260
+      )
+    }
+  }
+
   return (
     <Drawer
-      open
-      onOpenChange={(open) => {
-        if (!open) router.replace("/services", { scroll: false })
-      }}
+      open={open}
+      onOpenChange={handleOpenChange}
       swipeDirection="down"
     >
       <DrawerContent className="data-[swipe-axis=y]:top-1/2 data-[swipe-axis=y]:bottom-auto data-[swipe-axis=y]:mx-auto data-[swipe-axis=y]:mb-0 data-[swipe-axis=y]:w-[calc(100%-1.5rem)] data-[swipe-axis=y]:max-w-2xl data-[swipe-axis=y]:-translate-y-1/2 data-[swipe-axis=y]:overflow-hidden data-[swipe-axis=y]:rounded-3xl data-[swipe-axis=y]:border data-[swipe-axis=y]:[--drawer-content-max-height:min(86dvh,44rem)] data-[swipe-axis=y]:shadow-2xl data-starting-style:duration-[550ms] data-ending-style:duration-[250ms] motion-reduce:duration-0">

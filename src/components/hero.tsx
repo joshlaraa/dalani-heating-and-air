@@ -7,7 +7,7 @@ import { ArrowRight, BadgeCheck, Clock, ShieldCheck, Star } from "lucide-react"
 import { EstimateForm } from "@/components/estimate-form"
 import { buttonVariants } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site-config"
-import heroImage from "../../public/images/hero-ac-unit.jpg"
+import heroImage from "../../public/images/hero-san-diego-sunset.jpg"
 
 const enterStyle =
   "animate-in fade-in slide-in-from-bottom-4 fill-mode-backwards duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"
@@ -37,7 +37,7 @@ export function Hero() {
       <div className="relative isolate overflow-hidden bg-neutral-900 pt-16">
         <Image
           src={heroImage}
-          alt="Outdoor air conditioner unit mounted on a ledge beside a home"
+          alt="San Diego coastal homes and shoreline at sunset"
           fill
           priority
           placeholder="blur"

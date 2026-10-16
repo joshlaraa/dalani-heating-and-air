@@ -3,7 +3,6 @@ import Link from "next/link"
 import { cn } from "cn"
 import { Mail, MapPin, Phone } from "lucide-react"
 
-import { BackToTop } from "@/components/back-to-top"
 import { Logo } from "@/components/logo"
 import { legalNav, mainNav, services, siteConfig } from "@/lib/site-config"
 
@@ -112,7 +111,6 @@ export function SiteFooter() {
               </Link>
             ))}
           </div>
-          <BackToTop />
         </div>
       </div>
     </footer>

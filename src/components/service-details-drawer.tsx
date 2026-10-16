@@ -72,7 +72,7 @@ export function ServiceDetailsDrawer({
                 variant="ghost"
                 size="icon"
                 aria-label="Close service details"
-                className="absolute top-4 right-4 size-10 rounded-full border border-white/70 bg-background/90 text-foreground shadow-sm hover:bg-background"
+                className="absolute top-4 right-4 size-10 rounded-xl border border-white/70 bg-background/90 text-foreground shadow-sm hover:bg-background"
               />
             }
           >

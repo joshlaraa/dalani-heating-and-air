@@ -38,17 +38,18 @@ export function ContactSection() {
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-3">
             <p className="text-sm font-medium text-muted-foreground">
-              Contact us
+              Contact Dalani Heating &amp; Air
             </p>
             <h1
               id="contact-heading"
               className="font-heading text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
             >
-              Questions? Talk to a real person.
+              How can we help with your home comfort?
             </h1>
             <p className="max-w-md text-base leading-relaxed text-pretty text-muted-foreground sm:text-lg">
-              Call, email, or send us a note. We&apos;re a local team, so
-              you&apos;ll hear back from someone who actually knows your area.
+              Need a repair, an estimate, or help choosing the right service?
+              Call, email, or send us a message. Our local San Diego County team
+              will get back to you within one business hour.
             </p>
           </div>
 

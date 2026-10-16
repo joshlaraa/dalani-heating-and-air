@@ -72,7 +72,7 @@ export function SiteHeader() {
           <Link
             href="/contact"
             className={cn(
-              buttonVariants({ size: "lg" }),
+              buttonVariants({ size: "default" }),
               "h-10 px-4 has-data-[icon=inline-start]:pl-3.5"
             )}
           >
@@ -185,7 +185,7 @@ function ServicesMenu({
 
         <NavigationMenuLink
           render={<Link href={allHref} />}
-          className="group/all mt-auto justify-between px-3 text-sm in-data-[slot=navigation-menu-content]:rounded-full font-medium text-muted-foreground hover:text-foreground focus:text-foreground"
+          className="group/all mt-auto justify-between rounded-xl px-3 text-sm font-medium text-muted-foreground hover:text-foreground focus:text-foreground in-data-[slot=navigation-menu-content]:rounded-xl"
         >
           View all services
 

@@ -35,7 +35,7 @@ import {
 const DESKTOP_QUERY = "(min-width: 1024px)"
 
 const mobileLinkStyle =
-  "flex h-11 items-center gap-3 rounded-full px-4 text-base font-medium text-muted-foreground transition-[background-color,color,scale] duration-200 outline-none select-none hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 active:scale-[0.98] active:bg-muted active:text-foreground aria-[current=page]:bg-muted aria-[current=page]:text-foreground"
+  "flex h-11 items-center gap-3 rounded-xl px-4 text-base font-medium text-muted-foreground transition-[background-color,color,scale] duration-200 outline-none select-none hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 active:scale-[0.98] active:bg-muted active:text-foreground aria-[current=page]:bg-muted aria-[current=page]:text-foreground"
 
 const enterStyle =
   "animate-in fade-in slide-in-from-right-6 fill-mode-backwards duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"

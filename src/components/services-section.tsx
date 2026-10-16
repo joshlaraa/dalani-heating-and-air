@@ -109,10 +109,10 @@ function ServiceCard({ service }: { service: ServiceLink }) {
           <span className="max-w-xs text-xs leading-relaxed text-muted-foreground sm:text-sm">
             {service.description}
           </span>
-          <span className="mt-auto inline-flex items-center gap-1.5 pt-1 text-xs font-medium text-foreground">
+          <span className="mt-auto inline-flex min-h-9 items-center gap-2 rounded-xl border border-border px-3 pt-0 text-sm font-medium text-foreground">
             View service
             <ArrowRight
-              className="size-3.5 transition-transform duration-200 group-hover:translate-x-1"
+              className="size-4 transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden="true"
             />
           </span>

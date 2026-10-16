@@ -15,9 +15,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dalani Heating & Air | Heating, Cooling & HVAC Services",
+  metadataBase: new URL("https://dalani-heating-and-air.vercel.app"),
+  title: "Dalani Heating & Air | San Diego County HVAC",
   description:
-    "Furnace, AC, and heat pump repair, installation, and maintenance. 24/7 emergency service and free, no-obligation estimates.",
+    "Local heating and cooling service across San Diego County. Call Dalani Heating & Air at (760) 783-9401 for 24/7 emergency service and free estimates.",
+  openGraph: {
+    type: "website",
+    siteName: "Dalani Heating & Air",
+    title: "Dalani Heating & Air | San Diego County HVAC",
+    description:
+      "Local heating and cooling service across San Diego County. Call (760) 783-9401 for 24/7 emergency service and free estimates.",
+    images: [
+      {
+        url: "/images/share-card.png",
+        width: 1200,
+        height: 630,
+        alt: "Dalani Heating & Air — local HVAC service across San Diego County. Call (760) 783-9401.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dalani Heating & Air | San Diego County HVAC",
+    description:
+      "Local heating and cooling service across San Diego County. Call (760) 783-9401 for 24/7 emergency service and free estimates.",
+    images: ["/images/share-card.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

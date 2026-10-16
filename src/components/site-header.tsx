@@ -54,7 +54,7 @@ export function SiteHeader() {
       data-slot="site-header"
       data-scrolled={scrolled}
       data-transparent={transparent}
-      className="sticky top-0 z-40 w-full border-b border-transparent bg-background/80 text-foreground backdrop-blur-xl transition-[border-color,box-shadow,background-color,color,backdrop-filter] duration-500 ease-out data-[scrolled=true]:border-border data-[scrolled=true]:bg-background/85 data-[scrolled=true]:shadow-[0_1px_12px_-4px_rgb(0_0_0/0.08)] data-[transparent=true]:bg-transparent data-[transparent=true]:backdrop-blur-none"
+      className="sticky top-0 z-40 w-full border-b border-transparent bg-background/80 text-foreground backdrop-blur-xl transition-[border-color,box-shadow,background-color,color,backdrop-filter] duration-500 ease-out data-[scrolled=true]:border-border data-[scrolled=true]:bg-background/85 data-[scrolled=true]:shadow-[0_1px_12px_-4px_rgb(0_0_0/0.08)] data-[transparent=true]:border-b-0 data-[transparent=true]:bg-transparent data-[transparent=true]:backdrop-blur-none"
     >
       <a
         href="#main"
@@ -91,10 +91,7 @@ function DesktopNav() {
   const pathname = usePathname()
 
   return (
-    <NavigationMenu
-      className="hidden lg:flex"
-      aria-label="Main"
-    >
+    <NavigationMenu className="hidden lg:flex" aria-label="Main">
       <NavigationMenuList className="gap-0.5">
         {mainNav.map((item) => {
           const active = isActivePath(pathname, item.href)
@@ -127,10 +124,7 @@ function DesktopNav() {
               <NavigationMenuLink
                 active={active}
                 render={<Link href={item.href} />}
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  topLevelItemStyle
-                )}
+                className={cn(navigationMenuTriggerStyle(), topLevelItemStyle)}
               >
                 {item.title}
               </NavigationMenuLink>

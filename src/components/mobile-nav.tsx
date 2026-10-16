@@ -175,9 +175,10 @@ function MobileSubmenu({
   onNavigate: () => void
 }) {
   const active = isActivePath(pathname, item.href)
+  const [value, setValue] = useState<string[]>(active ? [item.href] : [])
 
   return (
-    <Accordion defaultValue={active ? [item.href] : []}>
+    <Accordion value={value} onValueChange={setValue}>
       <AccordionItem value={item.href}>
         <AccordionTrigger
           className={cn(

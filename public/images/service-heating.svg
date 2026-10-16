@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="440" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF2E8"/><stop offset="1" stop-color="#F5D9C5"/></linearGradient>
+    <linearGradient id="cabinet" x1="309" y1="79" x2="513" y2="372" gradientUnits="userSpaceOnUse"><stop stop-color="#F8FAFC"/><stop offset="1" stop-color="#AEBBC7"/></linearGradient>
+    <linearGradient id="fire" x1="410" y1="211" x2="410" y2="329" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD36A"/><stop offset="1" stop-color="#F26A37"/></linearGradient>
+  </defs>
+  <rect width="800" height="440" rx="28" fill="url(#bg)"/>
+  <circle cx="144" cy="92" r="86" fill="#fff" fill-opacity=".32"/>
+  <circle cx="671" cy="356" r="128" fill="#EFAF82" fill-opacity=".2"/>
+  <path d="M0 348c120-34 227-34 323 0 107 37 274 41 477-5v97H0v-92Z" fill="#E9C6AF"/>
+  <rect x="297" y="67" width="215" height="307" rx="18" fill="#8795A2" fill-opacity=".22"/>
+  <rect x="308" y="56" width="204" height="305" rx="16" fill="url(#cabinet)" stroke="#8795A2" stroke-width="3"/>
+  <rect x="328" y="77" width="164" height="34" rx="8" fill="#D6DEE5"/>
+  <circle cx="463" cy="94" r="5" fill="#F27A43"/>
+  <rect x="328" y="127" width="164" height="113" rx="10" fill="#253441"/>
+  <path d="M405 226c-2-19 14-28 15-43 13 13 27 22 24 42-2 12-11 20-23 20-10 0-19-7-16-19Z" fill="url(#fire)"/>
+  <path d="M416 231c0-9 7-13 8-21 8 9 10 15 7 22-2 5-6 8-10 7-4-1-6-4-5-8Z" fill="#FFF4CC"/>
+  <rect x="328" y="256" width="164" height="83" rx="9" fill="#E6EBEF"/>
+  <path d="M346 273h128M346 287h128M346 301h128M346 315h128M346 329h128" stroke="#9AA8B4" stroke-width="5" stroke-linecap="round"/>
+  <path d="M282 361h258" stroke="#B37D5A" stroke-width="8" stroke-linecap="round"/>
+</svg>

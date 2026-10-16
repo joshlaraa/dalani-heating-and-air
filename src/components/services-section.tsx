@@ -101,7 +101,7 @@ function ServiceCard({ service }: { service: ServiceLink }) {
         aria-label={`Learn more about ${service.title}`}
         className="group flex h-full min-h-[19rem] flex-col overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-xs transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md active:scale-[0.985] active:duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
       >
-        <ServicePlaceholder icon={service.icon} />
+        <ServicePlaceholder icon={service.icon} image={service.image} />
         <span className="flex min-h-40 flex-1 flex-col items-center gap-3 px-5 pt-8 pb-5 text-center sm:px-6 sm:pb-6">
           <span className="font-heading text-base font-semibold tracking-tight sm:text-lg">
             {service.title}

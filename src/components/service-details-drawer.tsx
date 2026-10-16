@@ -64,8 +64,12 @@ export function ServiceDetailsDrawer({
           placeholder and its icon box from here, so no other file changes.
           Phone: icon box 64px so it never collides with the label or badge.
         */}
-        <div className="relative shrink-0 [&>div]:aspect-auto [&>div]:h-[clamp(8rem,20dvh,11rem)] [&>div]:min-h-0 sm:[&>div]:h-[clamp(11rem,28dvh,16rem)] [&>div>span.relative]:size-16 sm:[&>div>span.relative]:size-24 [&>div>span.relative>svg]:size-7 sm:[&>div>span.relative>svg]:size-10">
-          <ServicePlaceholder icon={Icon} variant="feature" />
+        <div className="relative aspect-[20/11] w-full shrink-0 overflow-hidden">
+          <ServicePlaceholder
+            icon={Icon}
+            image={service.image}
+            variant="feature"
+          />
           <DrawerClose
             render={
               <Button
@@ -78,10 +82,6 @@ export function ServiceDetailsDrawer({
           >
             <X aria-hidden="true" />
           </DrawerClose>
-          <span className="absolute right-5 bottom-4 hidden items-center gap-1.5 rounded-full border border-white/70 bg-background/90 px-3 py-1.5 text-[11px] font-medium text-foreground shadow-sm sm:inline-flex">
-            <BadgeCheck className="size-3.5" aria-hidden="true" />
-            Service overview
-          </span>
         </div>
 
         {/* overflow-y-auto is only a safety net for very short screens */}
@@ -111,7 +111,7 @@ export function ServiceDetailsDrawer({
 
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
             <Link
-              href="/contact"
+              href={siteConfig.estimateHref}
               className={buttonVariants({
                 size: "lg",
                 className: "h-12 text-base sm:h-14 sm:flex-1",

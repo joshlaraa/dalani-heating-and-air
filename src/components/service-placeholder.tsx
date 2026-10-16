@@ -1,44 +1,48 @@
 import type { LucideIcon } from "lucide-react"
+import Image from "next/image"
 
 import { cn } from "cn"
 
 export function ServicePlaceholder({
   icon: Icon,
+  image,
   variant = "card",
 }: {
   icon: LucideIcon
+  image: { src: string; alt: string; position?: string }
   variant?: "card" | "feature"
 }) {
   return (
     <div
       aria-hidden="true"
+      style={variant === "feature" ? { aspectRatio: "20 / 11" } : undefined}
       className={cn(
         "relative isolate flex w-full items-center justify-center bg-muted",
         variant === "card"
           ? "aspect-[1.8] min-h-40 overflow-visible"
-          : "aspect-[2.2] min-h-40 overflow-hidden sm:min-h-48"
+          : "h-full min-h-0 overflow-hidden"
       )}
     >
-      {/*
-        Static background: one flat two-tone gradient. No blurred shapes and no
-        bright "via" band, so nothing shimmers when the card is hovered, pressed,
-        or animated. To change the look, edit the from-/to- colors on this line.
-      */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-linear-to-br from-brand-from/15 to-brand-to/20" />
-      <div className="pointer-events-none absolute inset-4 z-0 rounded-2xl border border-white/60" />
-
-      <span className="absolute top-4 left-5 z-10 text-[10px] font-semibold tracking-[0.16em] text-foreground/40 uppercase">
-        Dalani heating &amp; air
-      </span>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes={
+          variant === "card"
+            ? "(min-width: 1024px) 30vw, 50vw"
+            : "(min-width: 640px) 768px, 100vw"
+        }
+        className={cn(
+          "z-0 object-cover",
+          variant === "feature" && "scale-125"
+        )}
+        style={{ objectPosition: image.position }}
+      />
       {variant === "card" ? (
         <span className="absolute bottom-0 left-1/2 z-10 flex size-12 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full border border-border/70 bg-background text-foreground shadow-md sm:size-14">
           <Icon className="size-5 sm:size-6" />
         </span>
-      ) : (
-        <span className="relative z-10 flex size-20 items-center justify-center rounded-3xl border border-white/70 bg-background text-foreground shadow-lg sm:size-24">
-          <Icon className="size-9 sm:size-10" />
-        </span>
-      )}
+      ) : null}
     </div>
   )
 }

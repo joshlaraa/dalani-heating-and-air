@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { cn } from "cn"
@@ -9,14 +8,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site-config"
 import heroImage from "../../public/images/hero-san-diego-sunset.jpg"
 
-const enterStyle =
-  "animate-in fade-in slide-in-from-bottom-4 fill-mode-backwards duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none"
-
 const ctaStyle = "h-11 px-5 has-data-[icon=inline-end]:pr-4"
-
-function enterDelay(ms: number): CSSProperties {
-  return { animationDelay: `${ms}ms` }
-}
 
 function CtaArrow() {
   return (
@@ -42,7 +34,7 @@ export function Hero() {
           priority
           placeholder="blur"
           sizes="100vw"
-          className="-z-10 object-cover object-[36%_center] animate-in fade-in zoom-in-105 duration-[1400ms] ease-out motion-reduce:animate-none lg:object-center"
+          className="-z-10 object-cover object-[36%_center] lg:object-center"
         />
         <div
           aria-hidden="true"
@@ -61,32 +53,20 @@ export function Hero() {
           <div className="flex max-w-2xl flex-col items-start gap-6 text-white">
             <h1
               id="hero-heading"
-              className={cn(
-                enterStyle,
-                "font-heading text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
-              )}
-              style={enterDelay(100)}
+              className="font-heading text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
             >
               Comfort you can count on, every season.
             </h1>
 
             <p
-              className={cn(
-                enterStyle,
-                "max-w-xl text-base leading-relaxed text-pretty text-white/80 sm:text-lg"
-              )}
-              style={enterDelay(180)}
+              className="max-w-xl text-base leading-relaxed text-pretty text-white/80 sm:text-lg"
             >
               Furnace, AC, and heat pump repair, installs, and maintenance from
               a local team that shows up on time and stands behind every job.
             </p>
 
             <div
-              className={cn(
-                enterStyle,
-                "flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row"
-              )}
-              style={enterDelay(260)}
+              className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row"
             >
               <a
                 href="#estimate"
@@ -113,11 +93,7 @@ export function Hero() {
             </div>
 
             <ul
-              className={cn(
-                enterStyle,
-                "flex items-center gap-x-3.5 pt-1 text-xs whitespace-nowrap text-white/80 sm:gap-x-6 sm:text-sm"
-              )}
-              style={enterDelay(340)}
+              className="flex items-center gap-x-3.5 pt-1 text-xs whitespace-nowrap text-white/80 sm:gap-x-6 sm:text-sm"
             >
               <li className="flex items-center gap-1.5 sm:gap-2">
                 <Star
@@ -149,13 +125,7 @@ export function Hero() {
         id="estimate"
         className="relative z-10 mx-auto -mt-24 max-w-7xl scroll-mt-24 px-4 sm:px-6 lg:-mt-28 lg:px-8"
       >
-        <div
-          className={cn(
-            enterStyle,
-            "grid gap-8 rounded-3xl border bg-card p-5 text-card-foreground shadow-sm sm:p-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12 lg:p-10"
-          )}
-          style={enterDelay(440)}
-        >
+        <div className="grid gap-8 rounded-3xl border bg-card p-5 text-card-foreground shadow-sm sm:p-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12 lg:p-10">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <p className="text-sm font-medium text-muted-foreground">

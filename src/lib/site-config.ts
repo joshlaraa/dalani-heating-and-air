@@ -18,6 +18,11 @@ export type ServiceLink = NavLink & {
   description: string
   details: string
   icon: LucideIcon
+  image: {
+    src: string
+    alt: string
+    position?: string
+  }
 }
 
 export type NavItem = NavLink & {
@@ -35,7 +40,7 @@ export const siteConfig = {
   },
   email: "hello@dalaniheating.com",
   serviceArea: "Serving all of San Diego County",
-  estimateHref: "/free-estimate",
+  estimateHref: "/#estimate",
   reviews: {
     rating: "5.0",
     count: "300+",
@@ -56,6 +61,10 @@ export const services: ServiceLink[] = [
     details:
       "Get help with furnace repairs, replacement options, and seasonal tune-ups to keep your home comfortable when temperatures drop.",
     icon: Heater,
+    image: {
+      src: "/images/service-heating.svg",
+      alt: "Illustration of a residential furnace heating a home",
+    },
   },
   {
     title: "Air Conditioning",
@@ -64,6 +73,10 @@ export const services: ServiceLink[] = [
     details:
       "From troubleshooting and repairs to new installations and seasonal service, find the right support for your home's air conditioning.",
     icon: Snowflake,
+    image: {
+      src: "/images/service-air-conditioning.svg",
+      alt: "Illustration of an outdoor air conditioning condenser",
+    },
   },
   {
     title: "Heat Pumps",
@@ -72,6 +85,10 @@ export const services: ServiceLink[] = [
     details:
       "Heat pumps provide heating and cooling in one system. Get help with service, repairs, and installation for year-round home comfort.",
     icon: Fan,
+    image: {
+      src: "/images/service-heat-pumps.svg",
+      alt: "Illustration of an air-source heat pump moving warm and cool air",
+    },
   },
   {
     title: "Ductless Mini-Splits",
@@ -80,6 +97,10 @@ export const services: ServiceLink[] = [
     details:
       "Ductless mini-splits offer zoned heating and cooling without adding ductwork. We can help with installation, service, and repairs.",
     icon: AirVent,
+    image: {
+      src: "/images/service-ductless.svg",
+      alt: "Illustration of a wall-mounted ductless mini-split",
+    },
   },
   {
     title: "Indoor Air Quality",
@@ -88,6 +109,10 @@ export const services: ServiceLink[] = [
     details:
       "Explore filtration, air purifiers, and humidity control options to support a more comfortable indoor environment.",
     icon: Wind,
+    image: {
+      src: "/images/service-indoor-air-quality.svg",
+      alt: "Illustration of an air purifier cleaning indoor air",
+    },
   },
   {
     title: "Repairs & Maintenance",
@@ -96,6 +121,10 @@ export const services: ServiceLink[] = [
     details:
       "When something is not working as it should, get help diagnosing the issue. Routine maintenance can also help keep your heating and cooling system on track.",
     icon: Wrench,
+    image: {
+      src: "/images/service-maintenance.svg",
+      alt: "Illustration of an HVAC technician inspecting an outdoor unit",
+    },
   },
 ]
 

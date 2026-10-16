@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="440" gradientUnits="userSpaceOnUse"><stop stop-color="#E9F0FA"/><stop offset="1" stop-color="#CFDCEF"/></linearGradient>
+    <linearGradient id="unit" x1="478" y1="112" x2="640" y2="340" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#AFC0D2"/></linearGradient>
+  </defs>
+  <rect width="800" height="440" rx="28" fill="url(#bg)"/>
+  <circle cx="120" cy="92" r="72" fill="#fff" fill-opacity=".4"/>
+  <path d="M0 356c135-34 254-27 360 0 133 34 281 31 440-5v89H0v-84Z" fill="#B7C9DF"/>
+  <rect x="462" y="96" width="190" height="248" rx="18" fill="url(#unit)" stroke="#8299B0" stroke-width="4"/>
+  <rect x="480" y="114" width="154" height="212" rx="12" fill="#E6EDF5" stroke="#AABBD0" stroke-width="3"/>
+  <circle cx="557" cy="219" r="59" fill="#CFDCE9" stroke="#91A5B9" stroke-width="4"/>
+  <circle cx="557" cy="219" r="8" fill="#7189A0"/>
+  <path d="M557 210c-4-25 3-35 11-32 11 4 5 22-4 36m2 3c25-4 35 3 32 11-4 11-22 5-36-4m-3 2c4 25-3 35-11 32-11-4-5-22 4-36m-2-3c-25 4-35-3-32-11 4-11 22-5 36 4" fill="#A5B8CB"/>
+  <path d="M490 354v19m135-19v19" stroke="#7189A0" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="257" cy="184" r="40" fill="#D49C78"/>
+  <path d="M221 181c0-31 18-48 40-42 22 5 35 25 28 51-22-8-43-9-68-9Z" fill="#35475C"/>
+  <path d="M191 345c2-82 24-124 67-124s68 42 75 124H191Z" fill="#52759B"/>
+  <path d="m242 255 30 34 26-34m-25 31v59" stroke="#DDE8F3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="373" cy="254" r="37" fill="#fff" stroke="#93A8BF" stroke-width="5"/>
+  <path d="m373 233 5 18 15 7-15 4-5 17-5-17-15-4 15-7 5-18Z" fill="#E4A34F"/>
+  <path d="M331 250h20" stroke="#93A8BF" stroke-width="5" stroke-linecap="round"/>
+</svg>

@@ -93,7 +93,7 @@ export function Hero() {
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   ctaStyle,
-                  "bg-white text-neutral-900 hover:bg-white/90"
+                  "bg-white text-neutral-900"
                 )}
               >
                 Get a Free Estimate
@@ -152,7 +152,7 @@ export function Hero() {
         <div
           className={cn(
             enterStyle,
-            "grid gap-8 rounded-3xl bg-card p-5 text-card-foreground shadow-[0_24px_60px_-20px_rgb(0_0_0/0.25)] ring-1 ring-foreground/10 sm:p-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12 lg:p-10"
+            "grid gap-8 rounded-3xl border bg-card p-5 text-card-foreground shadow-sm sm:p-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12 lg:p-10"
           )}
           style={enterDelay(440)}
         >
